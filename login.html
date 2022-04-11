@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="">
+        <input type="email" placeholder="Enter email" id="userEmail">
+        <input type="password" placeholder="Enter password" id="userPassword">
+        <input type="submit" value="Login">
+    </form>
+</body>
+<script>
+    document.querySelector('form').addEventListener('submit',LoginFn);
+
+    var users=JSON.parse(localStorage.getItem('usersData'));
+
+    function LoginFn(){
+        event.preventDefault();
+        var enteredEmail=document.querySelector('#userEmail').value;
+        var enteredPassword=document.querySelector('#userPassword').value;
+        var flag=true;
+        for(var i=0;i<users.length;i++){
+            if(users[i].email==enteredEmail && users[i].password==enteredPassword){
+                alert("Login Successful");
+                flag=false;
+                break;
+            }
+        }
+        if(flag)
+        alert("Incorrect Details");
+
+    }
+
+</script>
+</html>
